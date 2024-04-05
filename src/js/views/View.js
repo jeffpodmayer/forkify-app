@@ -2,8 +2,9 @@ import icons from "url:../../img/icons.svg"; //Parcel 2
 
 export default class View {
   _data;
+
   render(data) {
-    if (!data || (Array.isArray(data) && data.lenght === 0))
+    if (!data || (Array.isArray(data) && data.length === 0))
       return this.renderError();
 
     this._data = data;
