@@ -24,6 +24,9 @@ const controlRecipes = async function () {
     if (!id) return;
     recipeView.renderSpinner();
 
+    // 0. Update results view to Mar selected searh result
+    resultsView.update(model.getSearchResultsPage());
+
     //1. LOADING RECIPE
     await model.loadRecipe(id);
 
@@ -64,11 +67,13 @@ const controlPagination = function (goToPage) {
   paginationView.render(model.state.search);
 };
 
-const controlServings = function () {
+const controlServings = function (newServings) {
   //1. Update the recipe servings (in state)
-  model.updateServings(8);
+  model.updateServings(newServings);
+
   //2. Update the view as well.
-  recipeView.render(model.state.recipe);
+  // recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
 };
 
 const init = function () {
